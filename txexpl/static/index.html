@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction Explainer Bookmarklet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .description {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #0078D7;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 2px;
+            font-size: 18px;
+        }
+        .button:hover {
+            background-color: #005A9E;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="description">Drag the button to your bookmarks bar.</p>
+        <a href="javascript:open('URL_BASE/explain_url?url='+escape(location.href))" class="button">Transaction Explainer</a>
+    </div>
+    <div class="container">
+        <div>Examples:</div>
+        <a target="_blank" href="explain_url?url=https%3A//etherscan.io/tx/0xa52c02055248e1c740186e39d684230efea468129bc8125de9788205254cb54c">
+            explain_url?url=https%3A//etherscan.io/tx/0xa52c02055248e1c740186e39d684230efea468129bc8125de9788205254cb54c
+        </a>
+        <a target="_blank" href="explain_url?url=https%3A//etherscan.io/tx/0x69120b25c790dbcbd5e50abb6ac8f402b905a26741f4f4f1a20745d1f534e9c8">
+            explain_url?url=https%3A//etherscan.io/tx/0x69120b25c790dbcbd5e50abb6ac8f402b905a26741f4f4f1a20745d1f534e9c8
+        </a>
+    </div>
+</body>
+</html>
