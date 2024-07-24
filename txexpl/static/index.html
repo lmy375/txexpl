@@ -35,17 +35,32 @@
 </head>
 <body>
     <div class="container">
-        <p class="description">Drag the button to your bookmarks bar.</p>
+        <p class="description">Drag the button to your bookmarks bar, click the bookmark on etherscan transaction URL to decode and explain the transaction.</p>
+        <p> Note: This is a PoC demo, which is a bit slow.</p>
         <a href="javascript:open('URL_BASE/explain_url?url='+escape(location.href))" class="button">Transaction Explainer</a>
     </div>
     <div class="container">
         <div>Examples:</div>
-        <a target="_blank" href="explain_url?url=https%3A//etherscan.io/tx/0xa52c02055248e1c740186e39d684230efea468129bc8125de9788205254cb54c">
-            explain_url?url=https%3A//etherscan.io/tx/0xa52c02055248e1c740186e39d684230efea468129bc8125de9788205254cb54c
-        </a>
-        <a target="_blank" href="explain_url?url=https%3A//etherscan.io/tx/0x69120b25c790dbcbd5e50abb6ac8f402b905a26741f4f4f1a20745d1f534e9c8">
-            explain_url?url=https%3A//etherscan.io/tx/0x69120b25c790dbcbd5e50abb6ac8f402b905a26741f4f4f1a20745d1f534e9c8
-        </a>
+        <p>
+            <a target="_blank" href="explain_url?url=https%3A//etherscan.io/tx/0xa52c02055248e1c740186e39d684230efea468129bc8125de9788205254cb54c">
+                explain_url(url): Decode the transaction from etherscan tx URL or safe multi-sig tx URL.
+            </a>
+        </p>
+        <p>
+            <a target="_blank" href="explain_txid?chain=eth&txid=0x69120b25c790dbcbd5e50abb6ac8f402b905a26741f4f4f1a20745d1f534e9c8">
+                explain_txid(chain, txid): Decode the transaction by chain and txid
+            </a>
+        </p>
+        <p>
+            <a target="_blank" href="explain_call?chain=eth&to=0xf164fC0Ec4E93095b804a4795bBe1e041497b92a&value=0&data=0x38ed173900000000000000000000000000000000000000000000000000d529ae9e8600000000000000000000000000000000000000000000000011071faa3238950a225c00000000000000000000000000000000000000000000000000000000000000a00000000000000000000000007d28a12558c79f5066a18ff5668024fcd74bf8af00000000000000000000000000000000000000000000000000000000658d46970000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc200000000000000000000000024289e2f9cdc03787e24997df5438ba8045bc9b2">
+                explain_call(chain, to, data, value): Decode with raw to, calldata and value
+            </a>
+        </p>
+        <p>
+            <a target="_blank" href="monkey.js">
+                Temper-monkey script to support decoding on signing with browser wallet.
+            </a>
+        </p>
     </div>
 </body>
 </html>

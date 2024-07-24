@@ -38,7 +38,7 @@
     }
 
     function openTxExpPage(chain, to, data, value){
-        const url = `http://localhost:8081/explain_call?chain=${chain}&to=${to}&data=${data}&value=${value}`;
+        const url = `URL_BASE/explain_call?chain=${chain}&to=${to}&data=${data}&value=${value}`;
         console.log(url);
         open(url);
     }
