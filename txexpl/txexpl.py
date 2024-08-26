@@ -28,15 +28,21 @@ def _list_files(dir, ext):
 
 
 SCAN_PATTERNS = [
+    ("mode", "mode"),
     ("optimistic", "op"),
     ("etherscan", "eth"),
     ("bscscan", "bsc"),
     ("snowtrace", "avax"),
-    ("polygonscan", "matic"),
-    ("arbiscan", "arb"),
-    ("basescan", "base"),
+    ("polygon", "matic"),
+    ("arb1", "arb"),
+    ("base", "base"),
+    ("scroll", "scroll"),
+    ("manta", "manta"),
 ]
 
+# https://safe-client.safe.global/v1/chains
+# https://gateway.safe.optimism.io/v1/chains
+# https://gateway.safe.manta.network/v1/chains
 SAFE_PATTERNS = [
     (
         "matic",
@@ -61,6 +67,24 @@ SAFE_PATTERNS = [
         ("https://gateway.multisig.mantle.xyz/v1/chains/5000/transactions/", "mantle"),
     ),
     ("base", ("https://safe-client.safe.global/v1/chains/8453/transactions/", "base")),
+    (
+        "mode",
+        (
+            "https://transaction-mode.safe.optimism.io/v1/chains/34443/transactions/",
+            "mode",
+        ),
+    ),
+    (
+        "manta",
+        ("https://transaction.safe.manta.network/v1/chains/169/transactions", "manta"),
+    ),
+    (
+        "scr",
+        (
+            "https://safe-transaction-scroll.safe.global/v1/chains/534352/transactions/",
+            "scroll",
+        ),
+    ),
 ]
 
 
@@ -417,7 +441,7 @@ class TxExplainer(ExtProcessor):
         return self.gen_full_md_from_txid(txid)
 
     def _gen_from_safe_url(self, url):
-        r = re.findall(r"(multisig_0x[0-9a-fA-F]{40}_0x[0-9a-fA-F]{64})", url)
+        r = re.findall(r"(multisig_[x0-9a-fA-F]{40,42}_[x0-9a-fA-F]{64,66})", url)
         if not r:
             return None
 
@@ -441,11 +465,11 @@ class TxExplainer(ExtProcessor):
 
     def gen_full_md_from_url(self, url):
 
-        ret = self._gen_from_scan_url(url)
+        ret = self._gen_from_safe_url(url)
         if ret:
             return ret
 
-        ret = self._gen_from_safe_url(url)
+        ret = self._gen_from_scan_url(url)
         if ret:
             return ret
 

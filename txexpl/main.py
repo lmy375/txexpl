@@ -30,6 +30,10 @@ def main():
         if args.url_base:
             conf[URL_BASE] = args.url_base
             logger.info(f"{URL_BASE}: {args.url_base}")
+        else:
+            if args.port:
+                conf[URL_BASE] = f"http://localhost:{args.port}"
+                logger.info(f"{URL_BASE}: {conf[URL_BASE]}")
 
         uvicorn.run(app, host="localhost", port=args.port)
     else:
